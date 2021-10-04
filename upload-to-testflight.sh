@@ -56,11 +56,11 @@ ARCHIVE_FILE_PATH="$ARCHIVE_DIR_PATH/${SCHEME_NAME} $(date "+%d.%m.%Y,_%H.%M").x
 
 echo
 echo "Cleaning the project"
-xcodebuild -quiet -project $PROJECT_NAME -scheme $SCHEME_NAME -configuration Release clean
+xcodebuild -quiet -project $PROJECT_NAME -scheme "$SCHEME_NAME" -configuration Release clean
 
 echo
 echo "Building the project"
-xcodebuild -quiet -project $PROJECT_NAME -scheme $SCHEME_NAME -configuration Release archive -archivePath "$ARCHIVE_FILE_PATH"
+xcodebuild -quiet -project $PROJECT_NAME -scheme "$SCHEME_NAME" -configuration Release archive -archivePath "$ARCHIVE_FILE_PATH"
 
 echo
 echo "Exporting the project"

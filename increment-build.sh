@@ -2,6 +2,8 @@
 
 # Created by Andrey Chukavin, 2021
 
+echo "Current branch: \"$(git branch --show-current)\""
+
 STAGED_CHANGES=$(git diff --cached --numstat | wc -l | tr -d ' ')
 
 if [ "$STAGED_CHANGES" != "0" ]; then
@@ -39,7 +41,7 @@ echo ""
 echo "Are you sure you want to change?"
 echo ""
 
-echo "Press [Ctrl+C] to abort. [Enter] to continue)"
+echo "Press [Ctrl+C] to abort. [Enter] to continue."
 read DECISION
 
 echo "OK"
@@ -49,7 +51,7 @@ xcrun agvtool new-version -all $NEW_BUILD_NUMBER
 
 MODIFIED_VERSION_FILES=$(git status --short | egrep "^ M.+(plist|pbxproj)" --color=never | sed 's/ M //g')
 
-git add $MODIFIED_VERSION_FILES 
+git add '*.xcodeproj/*.pbxproj' '*/Info.plist'
 git commit -m "Version $NEW_FULL_VERSION"
 git tag -a "v$NEW_FULL_VERSION_TAG" -m "Version $NEW_FULL_VERSION"
 
