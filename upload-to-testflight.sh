@@ -8,6 +8,8 @@ SCRIPT_DIR=$(dirname $0)
 usage() {
 	echo "Usage:"
 	echo "\t./$SCRIPT_NAME [--project PROJECT_NAME] --scheme SCHEME_NAME"
+	echo "\tHere's an output from \"xcodebuild -list\":"
+	xcodebuild -list
 }
 
 PROJECT_NAME="$(ls -d *.xcodeproj)"
